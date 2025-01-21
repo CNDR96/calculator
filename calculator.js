@@ -5,10 +5,10 @@ let displayValue = '';
 const display = document.getElementById("calculator-display");
 
 const digitButtons = document.querySelectorAll('.digit');
-digitButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        displayValue += button.textContent;
-        display.value = displayValue;
+    digitButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            displayValue += button.textContent;
+            display.value = displayValue;
     });
 });
 
@@ -19,7 +19,7 @@ operatorButtons.forEach(button => {
         num1 = parseFloat(displayValue); 
         displayValue = '';
         display.value = num1;
-});
+        });
 });
 
 
