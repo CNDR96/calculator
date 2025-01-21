@@ -1,7 +1,8 @@
 let operator = "";
 let num1 = null;
 let num2 = null;
-let displayValue = null
+let displayValue = '';
+const display = document.getElementById("calculator-display");
 
 const digitButtons = document.querySelectorAll('.digit');
 digitButtons.forEach(button => {
@@ -16,7 +17,11 @@ operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
         operator = button.getAttribute('data-op');
         num1 = parseFloat(displayValue); 
+        displayValue = '';
+        display.value = num1;
 });
+});
+
 
 document.querySelector('.clear').addEventListener('click', () => {
     displayValue = "";
