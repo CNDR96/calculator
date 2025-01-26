@@ -1,8 +1,8 @@
-let operator = "";
+let operator = '';
 let num1 = null;
 let num2 = null;
 let displayValue = '';
-const display = document.getElementById("calculator-display");
+const display = document.getElementById('calculator-display');
 
 const digitButtons = document.querySelectorAll('.digit');
     digitButtons.forEach(button => {
@@ -15,8 +15,10 @@ const digitButtons = document.querySelectorAll('.digit');
 const operatorButtons = document.querySelectorAll('.operator');
 operatorButtons.forEach(button => {
     button.addEventListener('click', () => {
-        operator = button.getAttribute('data-op');
-        num1 = parseFloat(displayValue); 
+        if (displayValue !== '') {
+            num1 = parseFloat(displayValue); 
+        }
+        operator = button.getAttribute('data-op');        
         displayValue = '';
         display.value = num1;
         });
@@ -24,17 +26,18 @@ operatorButtons.forEach(button => {
 
 
 document.querySelector('.clear').addEventListener('click', () => {
-    displayValue = "";
+    displayValue = '';
     num1 = null;
-    operator = "";
-    display.value = ""; // Clear the display
+    operator = '';
+    display.value = '';
 });
 
 document.querySelector('.equals').addEventListener('click', () => {
-    const num2 = parseFloat(displayValue); // Get second number
-    const result = operate(num1, num2, operator); // Perform calculation
-    display.value = result; // Show result
-    displayValue = ""; // Reset displayValue for next calculation
+    const num2 = parseFloat(displayValue); 
+    const result = operate(num1, num2, operator);
+    display.value = result;
+    num1 = result;
+    displayValue = '';
 });
 
 
